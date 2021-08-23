@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme: Theme) =>
             backgroundColor: theme.palette.background.paper,
         },
         imageList: {
-            width: 500,
+            width: 1200,
             height: 450,
         },
     }),
@@ -34,26 +34,28 @@ const Content: React.FC<Props> = ({data}) => {
         <div>
             <Typography paragraph>
                 Flight {data.launch.flight_number}:
-            <h1>
-                {data.launch.mission_name}
-                {data.launch.rocket &&
-                ` (${data.launch.rocket.rocket_name} | ${data.launch.rocket.rocket_type})`}
-            </h1>
+                <h1>
+                    {data.launch.mission_name}
+                    {data.launch.rocket &&
+                    ` (${data.launch.rocket.rocket_name} | ${data.launch.rocket.rocket_type})`}
+                </h1>
                 <p>{data.launch.details}</p>
             </Typography>
-            {!!data.launch.links && !!data.launch.links.flickr_images && (
-                <ImageList rowHeight={180} className={classes.imageList} cols={3}>
-                {data.launch.links.flickr_images.map((image, i) =>
-                    image ? (
-                        <img
-                            src={image}
-                            key={image}
-                            alt={`${data.launch?.mission_name} ${i}`}
-                        />
-                    ) : null,
+            <div className={classes.root}>
+                {!!data.launch.links && !!data.launch.links.flickr_images && (
+                    <ImageList rowHeight='auto' className={classes.imageList} cols={3}>
+                        {data.launch.links.flickr_images.map((image, i) =>
+                            image ? (
+                                <img
+                                    src={image}
+                                    key={image}
+                                    alt={`${data.launch?.mission_name} ${i}`}
+                                />
+                            ) : null,
+                        )}
+                    </ImageList>
                 )}
-                </ImageList>
-            )}
+            </div>
         </div>
     )
 };
