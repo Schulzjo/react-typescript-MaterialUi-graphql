@@ -21,6 +21,10 @@ const ContentContainer: React.FC<OwnProps> = ({id}) => {
     const { data, error, loading, refetch } = useLaunchProfileQuery({ variables: { id: String(id) } });
     const classes = useStyles();
 
+    React.useEffect(() => {
+        refetch({ id: String(id) });
+    }, [refetch, id]);
+
     if (loading) {
         return <div>Loading...</div>;
     }

@@ -23,6 +23,11 @@ export const useStyles = makeStyles((theme: Theme) =>
 export default function ClippedDrawer() {
     const classes = useStyles();
 
+    const [id, setId] = React.useState(1);
+    const handleIdChange = React.useCallback(newId => {
+        setId(newId);
+    }, []);
+
     return (
         <div className={classes.root}>
             <CssBaseline/>
@@ -33,8 +38,8 @@ export default function ClippedDrawer() {
                     </Typography>
                 </Toolbar>
             </AppBar>
-            <SideBarContainer/>
-            <ContentContainer id={42}/>
+            <SideBarContainer handleIdChange={handleIdChange}/>
+            <ContentContainer id={id}/>
         </div>
     );
 }
