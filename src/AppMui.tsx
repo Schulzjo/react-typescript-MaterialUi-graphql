@@ -34,7 +34,7 @@ export default function ClippedDrawer() {
                 </Toolbar>
             </AppBar>
             <SideBarContainer/>
-            <ContentContainer/>
+            <ContentContainer id={42}/>
         </div>
     );
 }
