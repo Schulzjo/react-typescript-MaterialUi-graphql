@@ -53,7 +53,7 @@ const SideBar: React.FC<Props> = ({data}) => {
                         data.launches.map(
                             (launch, i) =>
                                 launch && launch.mission_name && launch.launch_year && (
-                                    <ListItem button key={i}>
+                                    <ListItem button key={i} onClick={() => console.log(launch.flight_number)}>
                                         <ListItemIcon> <FlightTakeoffIcon/> </ListItemIcon>
                                         <ListItemText  primary={launch.launch_year + " " + launch.mission_name}/>
                                     </ListItem>
