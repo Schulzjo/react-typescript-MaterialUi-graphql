@@ -3,12 +3,12 @@ import Toolbar from "@material-ui/core/Toolbar";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import MailIcon from "@material-ui/icons/Mail";
+import FlightTakeoffIcon from '@material-ui/icons/FlightTakeoff';
 import ListItemText from "@material-ui/core/ListItemText";
 import Divider from "@material-ui/core/Divider";
 import Drawer from "@material-ui/core/Drawer";
 import {createStyles, makeStyles} from "@material-ui/core/styles";
+import {LaunchListQuery} from "../../generated/graphql";
 
 const drawerWidth = 240;
 const useStyles = makeStyles(() =>
@@ -26,10 +26,17 @@ const useStyles = makeStyles(() =>
     }),
 );
 
-export default function SideBar() {
+export interface OwnProps {
+    //handleIdChange: (newId: number) => void;
+}
 
+interface Props extends OwnProps {
+    data: LaunchListQuery;
+}
+
+
+const SideBar: React.FC<Props> = ({data}) => {
     const classes = useStyles()
-
     return (
         <div>
             <Drawer
@@ -42,26 +49,23 @@ export default function SideBar() {
                 <Toolbar/>
                 <div className={classes.drawerContainer}>
                     <List>
-                        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                            <ListItem button key={text}>
-                                <ListItemIcon>{index % 2 === 0 ? <InboxIcon/> : <MailIcon/>}</ListItemIcon>
-                                <ListItemText primary={text}/>
-                            </ListItem>
-                        ))}
+                        {!!data.launches &&
+                        data.launches.map(
+                            (launch, i) =>
+                                launch && launch.mission_name && launch.launch_year && (
+                                    <ListItem button key={i}>
+                                        <ListItemIcon> <FlightTakeoffIcon/> </ListItemIcon>
+                                        <ListItemText  primary={launch.launch_year + " " + launch.mission_name}/>
+                                    </ListItem>
+                                ),
+                        )}
                     </List>
                     <Divider/>
-                    <List>
-                        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                            <ListItem button key={text}>
-                                <ListItemIcon>{index % 2 === 0 ? <InboxIcon/> : <MailIcon/>}</ListItemIcon>
-                                <ListItemText primary={text}/>
-                            </ListItem>
-                        ))}
-                    </List>
                 </div>
             </Drawer>
         </div>
     )
-}
+};
 
 
+export default SideBar;
