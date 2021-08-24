@@ -1,6 +1,29 @@
+# graphql-typescript-react-MaterialUI
+This repository ist for playing around and discover the usage of graphql and the Material UI Framework. 
+It uses the code from https://blog.logrocket.com/build-a-graphql-react-app-with-typescript/ as starting point and
+add the usage of Material UI on top of it.
+
+The app uses the following graphql API: https://spacexdata.herokuapp.com/graphql 
+
+The Focus is just on induction of used Frameworks and technologies and  NOT
+on a nice design, so be lenient when checking out the layout and appearance of the app.
+
+## Used Packages and Frameworks
+- graphql
+- apollo/client
+- apollo/react-hooks
+- graphql-codegen/cli -> https://github.com/dotansimha/graphql-code-generator 
+- material-ui/core
+- material-ui/icons
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+Project initialised:
+```
+npx create-react-app my-app --template typescript 
+```
 
 ## Available Scripts
 
