@@ -6,7 +6,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import SideBarContainer from "./components/SideBar";
 
-import ContentContainer from "./components/Content";
+import LaunchProfileContainer from "./components/LaunchProfile";
 
 
 export const useStyles = makeStyles((theme: Theme) =>
@@ -39,7 +39,7 @@ export default function ClippedDrawer() {
                 </Toolbar>
             </AppBar>
             <SideBarContainer handleIdChange={handleIdChange}/>
-            <ContentContainer id={id}/>
+            <LaunchProfileContainer id={id}/>
         </div>
     );
 }

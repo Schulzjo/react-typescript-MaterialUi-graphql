@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme: Theme) =>
     }),
 );
 
-const Content: React.FC<Props> = ({data}) => {
+const LaunchProfile: React.FC<Props> = ({data}) => {
     const classes = useStyles();
 
     if (!data.launch) {
@@ -60,4 +60,4 @@ const Content: React.FC<Props> = ({data}) => {
     )
 };
 
-export default Content;
+export default LaunchProfile;

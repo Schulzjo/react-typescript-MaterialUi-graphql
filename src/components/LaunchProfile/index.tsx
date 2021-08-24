@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Content from './Content'
+import LaunchProfile from './LaunchProfile'
 import Toolbar from "@material-ui/core/Toolbar";
 import {createStyles, makeStyles, Theme} from "@material-ui/core/styles";
 import {useLaunchProfileQuery} from "../../generated/graphql";
@@ -17,7 +17,7 @@ interface OwnProps {
     id: number;
 }
 
-const ContentContainer: React.FC<OwnProps> = ({id}) => {
+const LaunchProfileContainer: React.FC<OwnProps> = ({id}) => {
     const { data, error, loading, refetch } = useLaunchProfileQuery({ variables: { id: String(id) } });
     const classes = useStyles();
 
@@ -40,9 +40,9 @@ const ContentContainer: React.FC<OwnProps> = ({id}) => {
     return (
         <main className={classes.content}>
             <Toolbar/>
-            <Content data={data}/>
+            <LaunchProfile data={data}/>
         </main>
     )
 };
 
-export default ContentContainer;
+export default LaunchProfileContainer;
