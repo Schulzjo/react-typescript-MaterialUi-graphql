@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {ApolloClient, ApolloProvider, InMemoryCache} from '@apollo/client';
-import AppMui from './AppMui';
+import AppMui from './App';
 
 const client = new ApolloClient({
     uri: 'https://spacexdata.herokuapp.com/graphql',
