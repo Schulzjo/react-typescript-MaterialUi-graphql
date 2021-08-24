@@ -2,7 +2,7 @@ import * as React from 'react';
 import Content from './Content'
 import Toolbar from "@material-ui/core/Toolbar";
 import {createStyles, makeStyles, Theme} from "@material-ui/core/styles";
-import {useLaunchProfileQuery} from "../generated/graphql";
+import {useLaunchProfileQuery} from "../../generated/graphql";
 
 export const useStyles = makeStyles((theme: Theme) =>
     createStyles({

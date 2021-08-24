@@ -6,7 +6,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import SideBarContainer from "./components/SideBar";
 
-import ContentContainer from "./Content";
+import ContentContainer from "./components/Content";
 
 
 export const useStyles = makeStyles((theme: Theme) =>

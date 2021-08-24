@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Typography from "@material-ui/core/Typography";
-import {LaunchProfileQuery} from "../generated/graphql";
+import {LaunchProfileQuery} from "../../generated/graphql";
 import {createStyles, makeStyles, Theme} from "@material-ui/core/styles";
 import ImageList from '@material-ui/core/ImageList';
 
