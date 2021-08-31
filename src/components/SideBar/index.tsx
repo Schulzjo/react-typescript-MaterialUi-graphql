@@ -1,10 +1,9 @@
 import * as React from 'react';
 import { useLaunchListQuery } from '../../generated/graphql';
 import SideBar from "./SideBar";
-import {OwnProps} from "./SideBar";
 
 
-const SideBarContainer: React.FC<OwnProps>  = (props) => {
+const SideBarContainer: React.FC  = (props) => {
     const { data, error, loading } = useLaunchListQuery();
 
     if (loading) {

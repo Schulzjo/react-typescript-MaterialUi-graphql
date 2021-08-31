@@ -9,6 +9,7 @@ import Divider from "@material-ui/core/Divider";
 import Drawer from "@material-ui/core/Drawer";
 import {createStyles, makeStyles} from "@material-ui/core/styles";
 import {LaunchListQuery} from "../../generated/graphql";
+import {navigate} from "hookrouter";
 
 const drawerWidth = 240;
 const useStyles = makeStyles(() =>
@@ -26,16 +27,14 @@ const useStyles = makeStyles(() =>
     }),
 );
 
-export interface OwnProps {
-    handleIdChange: (newId: number) => void;
-}
 
-interface Props extends OwnProps {
+
+interface Props {
     data: LaunchListQuery;
 }
 
 
-const SideBar: React.FC<Props> = ({data, handleIdChange}) => {
+const SideBar: React.FC<Props> = ({data}) => {
     const classes = useStyles()
     return (
         <div>
@@ -53,7 +52,7 @@ const SideBar: React.FC<Props> = ({data, handleIdChange}) => {
                         data.launches.map(
                             (launch, i) =>
                                 launch && launch.mission_name && launch.launch_year && (
-                                    <ListItem button key={i} onClick={() => handleIdChange(launch.flight_number!)}>
+                                    <ListItem button key={i} onClick={() => navigate(`/lp/${launch.flight_number}`)}>
                                         <ListItemIcon> <FlightTakeoffIcon/> </ListItemIcon>
                                         <ListItemText  primary={launch.launch_year + " " + launch.mission_name}/>
                                     </ListItem>

@@ -5,8 +5,11 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import SideBarContainer from "./components/SideBar";
+import {useRoutes, navigate} from 'hookrouter';
 
 import LaunchProfileContainer from "./components/LaunchProfile";
+import HomeContainer from "./components/Home";
+import {Link} from "@material-ui/core";
 
 
 export const useStyles = makeStyles((theme: Theme) =>
@@ -21,25 +24,32 @@ export const useStyles = makeStyles((theme: Theme) =>
 );
 
 export default function ClippedDrawer() {
+
+    const routes = {
+        '/' :()=><HomeContainer/>,
+        '/home' :()=><HomeContainer/>,
+        '/lp/:id': ({id}:{[_:string]:any})=><LaunchProfileContainer id={id}/>
+    };
+
+    const routeResults = useRoutes(routes);
+
     const classes = useStyles();
 
-    const [id, setId] = React.useState(1);
-    const handleIdChange = React.useCallback(newId => {
-        setId(newId);
-    }, []);
 
     return (
         <div className={classes.root}>
             <CssBaseline/>
             <AppBar position="fixed" className={classes.appBar}>
                 <Toolbar>
-                    <Typography variant="h6" noWrap>
-                        Clipped drawer
+                    <Typography noWrap >
+                        <Link color="inherit" variant="h5" component="button" onClick={()=> navigate('/')}>
+                            Home
+                        </Link>
                     </Typography>
                 </Toolbar>
             </AppBar>
-            <SideBarContainer handleIdChange={handleIdChange}/>
-            <LaunchProfileContainer id={id}/>
+            <SideBarContainer/>
+            {routeResults||<h1>PAGE  NOT FOUND</h1>}
         </div>
     );
 }
