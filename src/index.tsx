@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {ApolloClient, ApolloProvider, InMemoryCache} from '@apollo/client';
-import AppMui from './App';
+import App from './App';
 
 const client = new ApolloClient({
     uri: 'https://spacexdata.herokuapp.com/graphql',
@@ -10,7 +10,7 @@ const client = new ApolloClient({
 
 ReactDOM.render(
     <ApolloProvider client={client}>
-        <AppMui />
+        <App />
     </ApolloProvider>,
     document.getElementById('root')
 );
