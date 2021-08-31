@@ -15,6 +15,10 @@ on a nice design, so be lenient when checking out the layout and appearance of t
 - graphql-codegen/cli -> https://github.com/dotansimha/graphql-code-generator 
 - material-ui/core
 - material-ui/icons
+- hookrouter https://www.npmjs.com/package/hookrouter 
+
+## Planed implementations
+- creation of a dashboard using a react/js chart packages
 
 # Getting Started with Create React App
 
