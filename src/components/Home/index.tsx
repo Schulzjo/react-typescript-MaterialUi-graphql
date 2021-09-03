@@ -1,5 +1,8 @@
 import * as React from 'react';
 import {createStyles, makeStyles, Theme} from "@material-ui/core/styles";
+import PlotLaunchesPerYear from "./plotlaunchesperyear";
+import {useLaunchListQuery} from "../../generated/graphql";
+
 
 export const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -10,7 +13,7 @@ export const useStyles = makeStyles((theme: Theme) =>
         center: {
             display: 'flex',
             flexWrap: 'wrap',
-            margin: 200,
+            margin: 50,
             justifyContent: 'space-around',
 
         }
@@ -19,12 +22,21 @@ export const useStyles = makeStyles((theme: Theme) =>
 
 
 const HomeContainer: React.FC = () => {
+    const {data, error, loading} = useLaunchListQuery();
     const classes = useStyles();
 
+    if (loading) {
+        return <div>Loading...</div>;
+    }
+
+    if (error || !data) {
+        return <div>ERROR</div>;
+    }
 
     return (
-        <main className={classes.content }>
-            <h1 className={classes.center }>Home</h1>
+        <main className={classes.content}>
+            <h1 className={classes.center}>Home</h1>
+            <PlotLaunchesPerYear data={data}/>
         </main>
     )
 };
