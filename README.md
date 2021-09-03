@@ -16,9 +16,10 @@ on a nice design, so be lenient when checking out the layout and appearance of t
 - material-ui/core
 - material-ui/icons
 - hookrouter https://www.npmjs.com/package/hookrouter 
+- devexpress/dx-react-chart-material-ui https://devexpress.github.io/
 
 ## Planed implementations
-- creation of a dashboard using a react/js chart packages
+- creation of a dashboard using multiple react/js chart packages to play around with them
 
 # Getting Started with Create React App
 
