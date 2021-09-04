@@ -8,6 +8,8 @@ The app uses the following graphql API: https://spacexdata.herokuapp.com/graphql
 The Focus is just on induction of used Frameworks and technologies and  NOT
 on a nice design, so be lenient when checking out the layout and appearance of the app.
 
+![Home](./screenshots/home.png?raw=true)
+
 ## Used Packages and Frameworks
 - graphql
 - apollo/client
