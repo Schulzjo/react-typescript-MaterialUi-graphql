@@ -9,7 +9,20 @@ import {useRoutes, navigate} from 'hookrouter';
 
 import LaunchProfileContainer from "./components/LaunchProfile";
 import HomeContainer from "./components/Home";
-import {Link} from "@material-ui/core";
+import {Link, ThemeProvider} from "@material-ui/core";
+import { createTheme } from '@material-ui/core/styles';
+
+const darkTheme = createTheme({
+    palette: {
+        type: "dark",
+        primary: {
+            main: "#303030"
+        },
+        secondary: {
+            main: "#fafafa"
+        }
+    }
+})
 
 
 export const useStyles = makeStyles((theme: Theme) =>
@@ -26,9 +39,9 @@ export const useStyles = makeStyles((theme: Theme) =>
 export default function ClippedDrawer() {
 
     const routes = {
-        '/' :()=><HomeContainer/>,
-        '/home' :()=><HomeContainer/>,
-        '/lp/:id': ({id}:{[_:string]:any})=><LaunchProfileContainer id={id}/>
+        '/': () => <HomeContainer/>,
+        '/home': () => <HomeContainer/>,
+        '/lp/:id': ({id}: { [_: string]: any }) => <LaunchProfileContainer id={id}/>
     };
 
     const routeResults = useRoutes(routes);
@@ -37,19 +50,21 @@ export default function ClippedDrawer() {
 
 
     return (
-        <div className={classes.root}>
-            <CssBaseline/>
-            <AppBar position="fixed" className={classes.appBar}>
-                <Toolbar>
-                    <Typography noWrap >
-                        <Link color="inherit" variant="h5" component="button" onClick={()=> navigate('/')}>
-                            Home
-                        </Link>
-                    </Typography>
-                </Toolbar>
-            </AppBar>
-            <SideBarContainer/>
-            {routeResults||<h1>PAGE  NOT FOUND</h1>}
-        </div>
+        <ThemeProvider theme={darkTheme}>
+            <div className={classes.root}>
+                <CssBaseline/>
+                <AppBar position="fixed" className={classes.appBar}>
+                    <Toolbar>
+                        <Typography noWrap>
+                            <Link color="inherit" variant="h5" component="button" onClick={() => navigate('/')}>
+                                Home
+                            </Link>
+                        </Typography>
+                    </Toolbar>
+                </AppBar>
+                <SideBarContainer/>
+                {routeResults || <h1>PAGE NOT FOUND</h1>}
+            </div>
+        </ThemeProvider>
     );
 }
